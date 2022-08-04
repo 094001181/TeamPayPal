@@ -22,9 +22,9 @@ router.get('/', function (req, res, next) {
       'alink': 'https://developer.paypal.com/docs/support/'
     },
     {
-      'desc': 'PayPal Developer Site - Button Assistance.',
-      'title': 'PayPal Developer - Buttons Code',
-      'alink': 'https://developer.paypal.com/demo/checkout/#/pattern/client'
+      'desc': 'Sandbox Login - Personal and Business.',
+      'title': 'Sandbox Login - Personal and Business.',
+      'alink': 'https://sandbox.paypal.com'
     },
     {
       'desc': 'npm is the package manager for Node.js',
