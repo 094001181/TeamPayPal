@@ -1,0 +1,16 @@
+<p>{{description}}</p>
+
+
+<p>{{credit}} <a href="{{creditwww}}" target="_blank">{{creditwww}}</a></p>
+
+<p>Useful Links:</p>
+<table cellpadding="15px">
+{{#each links}}
+    <tr>
+        <td>
+            <a href="{{this.alink}}" target="_blank">{{this.title}}</a><br>{{this.desc}}
+        </td>
+    </tr>
+{{/each}}
+</table>
+

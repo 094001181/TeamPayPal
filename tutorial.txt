@@ -1,0 +1,98 @@
+1. Create a PayPal Developer account
+	- Show screenshot
+2. Create an App - ex Java2068 
+         - Show screenshot
+3. Create some Sandbox accounts to use for testing or you can use the defaults
+         - Show screenshots - Accounts - there are two different types of accounts - Personal Account and Business Account
+Our demo uses the default accounts
+
+Differnet buttons area available direct from PayPal
+https://developer.paypal.com/demo/checkout/#/pattern/style
+
+Page for Paypal Developer Site -
+https://developer.paypal.com/support/
+
+
+
+
+
+
+Build out the layout
+
+Install in the terminal - npm i paypal-rest-sdk
+Run npm i to 
+
+
+Create paypaldemo.hbs file
+Create paypaldemo.js file
+
+
+IN Paypaldemo.js
+Import express and the router object
+Import paypal-rest-sdk
+using  var paypal = require('paypal-rest-sdk');
+
+NOTE when configuring the credentials: 
+sandbox or live are the two options for 'mode' - we will use sandbox for our demo
+This configuration could be added to globals.js or to the paypal page.  In our demo we have added to our paypaldemo page.
+
+Configure sandbox with your client credentials
+paypal.configure({
+    'mode': 'sandbox', 
+    'client_id': 'client_idGoesHere',
+    'client_secret': 'client_secretGoesHere'
+  });
+
+ADD A TEST PAYMENT - code copied from site
+var create_payment_json = {
+    "intent": "sale",
+    "payer": {
+        "payment_method": "paypal"
+    },
+    "redirect_urls": {
+        "return_url": "http://return.url",
+        "cancel_url": "http://cancel.url"
+    },
+    "transactions": [{
+        "item_list": {
+            "items": [{
+                "name": "item",
+                "sku": "item",
+                "price": "1.00",
+                "currency": "USD",
+                "quantity": 1
+            }]
+        },
+        "amount": {
+            "currency": "USD",
+            "total": "1.00"
+        },
+        "description": "This is the payment description."
+    }]
+};
+ 
+ 
+paypal.payment.create(create_payment_json, function (error, payment) {
+    if (error) {
+        throw error;
+    } else {
+        console.log("Create Payment Response");
+        console.log(payment);
+    }
+});
+
+Create a //get cart options secion
+export the router object
+
+.................................................
+IN App.js create the route to the paypaldemo page
+var paypaldemoRouter = require('/routes/paymentdemo');
+
+ADD  - the app.use to include the new Router
+app.use('/paypaldemo', paypaldemoRouter);
+
+
+
+
+
+
